@@ -55,14 +55,3 @@ Examines whether IQ group (High/Low) is associated with Gender.
 
 Compares the ages of participants in the High and Low IQ groups.
 
-## Output
-
-The program prints:
-
-Test statistics
-
-p-values
-
-Sample sizes
-
-Basic data information
