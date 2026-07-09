@@ -26,11 +26,11 @@ Comparing the ages of participants in the High and Low IQ groups using another i
 
 The Excel file should contain at least the following columns:
 
-FSIQ — Full Scale IQ score
+FSIQ: Full Scale IQ score
 
-Gender — Participant gender (M or F)
+Gender: Participant gender (M or F)
 
-Age — Participant age
+Age: Participant age
 
 
 ## Statistical Methods
