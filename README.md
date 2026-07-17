@@ -1,57 +1,129 @@
-# python-based-statistic
-Statistical analysis scripts used in the associated research project
-IQ Statistical Analysis in Python
+python-based-statistic
 
-This repository contains a simple Python workflow for performing statistical analyses on an IQ dataset stored in an Excel file. The project demonstrates how to read Excel data using Pandas and apply common statistical tests using SciPy.
+Statistical analysis scripts used in the associated research project IQ Statistical Analysis in Python.
 
-## Overview
+This repository contains Python scripts for performing descriptive and inferential statistical analyses on an IQ dataset stored in an Excel file. The workflow automatically checks statistical assumptions and selects the appropriate statistical test based on the characteristics of the data.
 
-The analysis includes:
+Features
 
-Checking whether FSIQ scores follow a normal distribution using the Shapiro–Wilk test.
+The scripts perform the following analyses:
 
-Comparing FSIQ scores between males and females using an independent samples t-test.
+Read participant data from an Excel file using Pandas.
+Display basic information and check for missing values.
+Visualize FSIQ distribution using a Boxplot.
+Test normality using the Shapiro–Wilk test.
+Compare FSIQ scores between males and females.
+Automatically choose between:
+Independent Samples t-test
+Welch's t-test
+Mann–Whitney U test
+Calculate Cohen's d as the effect size for group comparisons.
+Evaluate the relationship between Age and FSIQ.
+Automatically choose between:
+Pearson correlation
+Spearman rank correlation
+Test the association between Gender and IQ class (Low vs High).
+Automatically choose between:
+Chi-square test of independence
+Fisher's Exact test (when Chi-square assumptions are violated)
+Calculate Cramer's V as the effect size for Chi-square analyses.
+Compare participant age between Low and High IQ groups using the appropriate statistical test.
+Dataset
 
-Inspecting missing values and basic information for the Age and FSIQ variables.
+The Excel dataset should contain at least the following columns:
 
-Evaluating the relationship between Age and FSIQ using Pearson correlation.
+Column	Description
+FSIQ	Full Scale IQ score
+Gender	Participant gender (M/F)
+Age	Participant age
+class	IQ classification (Low, Average, High)
 
-Creating High and Low IQ groups based on the median FSIQ score.
+The scripts use only the Low and High IQ classes for group-comparison analyses. Participants classified as Average are excluded from those specific analyses.
 
-Testing the association between Gender and IQ group using the Chi-square test of independence.
+Statistical Methods
+Shapiro–Wilk Test
 
-Comparing the ages of participants in the High and Low IQ groups using another independent samples t-test.
+Evaluates whether continuous variables are approximately normally distributed.
 
-## Dataset
+If normality is violated, non-parametric methods are automatically selected.
 
-The Excel file should contain at least the following columns:
+Levene's Test
 
-FSIQ: Full Scale IQ score
+Evaluates equality of variances between two groups.
 
-Gender: Participant gender (M or F)
+Equal variances → Independent Samples t-test
+Unequal variances → Welch's t-test
+Independent Samples t-Test
 
-Age: Participant age
+Compares the means of two independent groups when assumptions of normality are satisfied.
 
+Welch's t-Test
 
-## Statistical Methods
+Used instead of the standard t-test when group variances are unequal.
 
-1. Shapiro–Wilk Test
+Mann–Whitney U Test
 
-Tests whether the FSIQ variable is normally distributed.
+A non-parametric alternative to the independent samples t-test.
 
-2. Independent Samples t-Test
+Used when normality assumptions are not met.
 
-Compares the mean FSIQ scores of male and female participants.
+Pearson Correlation
 
-3. Pearson Correlation
+Measures the linear relationship between Age and FSIQ when both variables are normally distributed.
 
-Measures the linear relationship between Age and FSIQ.
+Spearman Rank Correlation
 
-4. Chi-Square Test of Independence
+Measures the monotonic relationship between Age and FSIQ when normality assumptions are violated.
 
-Examines whether IQ group (High/Low) is associated with Gender.
+Chi-Square Test of Independence
 
-5. Independent Samples t-Test for Age
+Evaluates whether Gender and IQ class are statistically associated.
 
-Compares the ages of participants in the High and Low IQ groups.
+Before performing the test, expected cell frequencies are checked.
 
+Fisher's Exact Test
+
+Automatically replaces the Chi-square test when expected cell frequencies are too small (typically < 5).
+
+Effect Size
+Cohen's d
+
+Reports the magnitude of the difference between two independent groups.
+
+Cramer's V
+
+Reports the strength of association between categorical variables in Chi-square analyses.
+
+Required Python Packages
+pip install pandas
+pip install scipy
+pip install numpy
+pip install matplotlib
+pip install openpyxl
+
+Or install everything at once:
+
+pip install pandas scipy numpy matplotlib openpyxl
+Running the Analysis
+Place the Excel dataset in your desired directory.
+Update the file path in the script
+Run the Python script:
+python main.py
+Output
+
+The scripts automatically report:
+
+Sample sizes
+Summary statistics
+Normality assessment
+Selected statistical test
+Test statistic
+p-value
+Effect size (when applicable)
+A plain-English interpretation of the results
+Libraries Used
+Pandas
+NumPy
+SciPy
+Matplotlib
+OpenPyXL
